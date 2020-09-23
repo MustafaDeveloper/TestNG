@@ -41,7 +41,6 @@ public class _03_EditAccount extends MetodDriver {
         driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
         Tools.successMessageValidation(driver);
-
     }
 
 }

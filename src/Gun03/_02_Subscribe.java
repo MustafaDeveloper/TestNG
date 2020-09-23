@@ -11,7 +11,6 @@ import Utils.MetodDriver;
 import Utils.Tools;
 import jdk.jfr.Enabled;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,7 +39,6 @@ public class _02_Subscribe extends MetodDriver {
         continueButton.click();
 
         Tools.successMessageValidation(driver);
-
     }
 
     @Test (priority = 1)
@@ -59,7 +57,6 @@ public class _02_Subscribe extends MetodDriver {
         continueButton.click();
 
         Tools.successMessageValidation(driver);
-
     }
 
     @Test (priority = 2)
@@ -78,8 +75,11 @@ public class _02_Subscribe extends MetodDriver {
         else
             noRadioButton.click();
 
-        Tools.successMessageValidation(driver);
+        //Continue (Tamam) butonuna basıldı.
+        WebElement continueButton = driver.findElement(By.cssSelector("input[value='Continue']"));
+        continueButton.click();
 
+        Tools.successMessageValidation(driver);
     }
 
 }

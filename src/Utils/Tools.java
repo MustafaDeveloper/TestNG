@@ -30,7 +30,7 @@ public class Tools {
         Assert.assertTrue(SuccessMessage.getText().contains("uccess"));
     }
 
-    public static void selectByIndex(WebElement dropDownName) //country select, parametre olarak country element geliyor
+    public static void selectByIndex(WebElement dropDownName)
     {
         Select _select=new Select(dropDownName);
 
@@ -52,6 +52,7 @@ public class Tools {
                 0-1-2-3...8
                 1-2-3-4....9
          */
+
         return RandomNumber;
     }
 
