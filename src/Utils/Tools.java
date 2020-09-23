@@ -34,14 +34,13 @@ public class Tools {
     {
         Select _select=new Select(dropDownName);
 
-        _select.selectByIndex(RandomNumberGenerator(_select.getOptions().size()));
-
+        _select.selectByIndex( RandomNumberGenerator(_select.getOptions().size()) );
     }
 
     public static int RandomNumberGenerator(int max)
     {
         Random rnd=new Random();
-        int RandomNumber = rnd.nextInt(max-1)+1;
+        int RandomNumber =rnd.nextInt(max-1)+1; // 1.2.3...8.9
 
         /*
           int randomNumber = rnd.nexInt(10); -> 0-1-2....9

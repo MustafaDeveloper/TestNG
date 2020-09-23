@@ -1,0 +1,28 @@
+<suite name="suite1">
+
+    <test name="test1">
+
+        <groups>
+            <run>
+                <include name="SmokeTest"></include>
+            </run>
+
+
+        </groups>
+
+
+        <classes>
+            <class name="GUN005._03_Groups">
+
+            <methods>
+
+                <exclude name="Test3"></exclude>
+            </methods>
+
+            </class>
+
+
+        </classes>
+    </test>
+
+</suite>
