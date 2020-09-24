@@ -1,0 +1,14 @@
+<suite name="suite1">
+
+
+    <test name="test1">
+        <parameter name="enquiry" value="Merhaba herhangi onemli msj yok......"></parameter>
+        <classes>
+            <class name="GUN006._01_ContactUs"></class>
+        </classes>
+    </test>
+
+
+
+
+</suite>
