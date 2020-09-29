@@ -16,22 +16,28 @@ import java.util.concurrent.TimeUnit;
 
 public class ParameterDriver {
 
-    public static WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeClass
     @Parameters("browser")
     public void beforeClass(String browser) {
 
-        if (browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome"))
+        {
             System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-            driver = new FirefoxDriver();
-        }
-        else if ( browser.equalsIgnoreCase("firefox") )
-        {
-            System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
             driver = new ChromeDriver();
         }
+        else
+            if (browser.equalsIgnoreCase("firefox"))
+            {
+                System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+                driver = new FirefoxDriver();
+            }
+
+
+
+
 
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -51,21 +57,25 @@ public class ParameterDriver {
         WebElement btnLogin = driver.findElement(By.cssSelector("input.btn.btn-primary"));
         btnLogin.click();
 
-        //Güvenlik işlemlerini aşmak için
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("button[id='details-button']")));
 
-        WebElement sitedonusBtn = driver.findElement(By.cssSelector("button[id='details-button']"));
-        sitedonusBtn.click();
+        if (!browser.equalsIgnoreCase("firefox")){
+            //Güvenlik işlemlerini aşmak için
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("button[id='details-button']")));
 
-        WebElement btnSiteIlerleLinki = driver.findElement(By.id("proceed-link"));
-        btnSiteIlerleLinki.click();
+            WebElement sitedonusBtn = driver.findElement(By.cssSelector("button[id='details-button']"));
+            sitedonusBtn.click();
+
+            WebElement btnSiteIlerleLinki = driver.findElement(By.id("proceed-link"));
+            btnSiteIlerleLinki.click();
+        }
+
 
     }
 
     @AfterClass
     public void afterClass() throws InterruptedException {
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         driver.quit();
     }
 }

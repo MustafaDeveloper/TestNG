@@ -8,9 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class MetodDriver {
@@ -18,11 +20,10 @@ public class MetodDriver {
     public static WebDriver driver;
 
     @BeforeClass
-    public void beforeClass()
-    {
-        System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY,"true");
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
-        driver=new ChromeDriver();
+    public void beforeClass() {
+        System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
 
@@ -32,30 +33,30 @@ public class MetodDriver {
         driver.get("http://opencart.abstracta.us/index.php?route=account/login");
 
         //Login
-        WebElement email=driver.findElement(By.id("input-email"));
+        WebElement email = driver.findElement(By.id("input-email"));
         email.sendKeys("asd@gmail.com");
 
-        WebElement pass=driver.findElement(By.id("input-password"));
+        WebElement pass = driver.findElement(By.id("input-password"));
         pass.sendKeys("123qweasd");
 
-        WebElement btnLogin =driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        WebElement btnLogin = driver.findElement(By.cssSelector("input.btn.btn-primary"));
         btnLogin.click();
 
+
         //Güvenlik işlemlerini aşmak için
-        WebDriverWait wait = new WebDriverWait(driver,5);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("button[id='details-button']")));
 
         WebElement sitedonusBtn = driver.findElement(By.cssSelector("button[id='details-button']"));
         sitedonusBtn.click();
 
-        WebElement btnSiteIlerleLinki =driver.findElement(By.id("proceed-link"));
+        WebElement btnSiteIlerleLinki = driver.findElement(By.id("proceed-link"));
         btnSiteIlerleLinki.click();
-
     }
 
     @AfterClass
     public void afterClass() throws InterruptedException {
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         driver.quit();
     }
 }
