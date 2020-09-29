@@ -52,6 +52,7 @@ public class MetodDriver {
 
         WebElement btnSiteIlerleLinki = driver.findElement(By.id("proceed-link"));
         btnSiteIlerleLinki.click();
+
     }
 
     @AfterClass
