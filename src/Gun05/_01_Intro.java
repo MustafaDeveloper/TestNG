@@ -1,5 +1,6 @@
 package Gun05;
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class _01_Intro {
@@ -35,7 +36,9 @@ public class _01_Intro {
     public void bMethod()  { System.out.println("Before Method"); }
 
     @Test
-    public void TestIntro1()  { System.out.println("Test 1"); }
+    public void TestIntro1()  { System.out.println("Test 1");
+        Assert.fail();
+    }
 
     @Test
     public void TestIntro2()  { System.out.println("Test 2"); }

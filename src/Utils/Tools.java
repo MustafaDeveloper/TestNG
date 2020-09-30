@@ -55,4 +55,19 @@ public class Tools {
         return RandomNumber;
     }
 
+    // List in içinde aranan kelime var mı ? yok ise(bulundu=false) hata oluştur
+    public static void ListContainsString(List<WebElement> menuActualList, String expectedString)
+    {
+        boolean bulundu=false;
+        for(WebElement el: menuActualList)
+        {
+            if (el.getText().contains(expectedString)) {
+                bulundu = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue( bulundu, "aranan eleman bulunamadı");
+    }
+
 }
